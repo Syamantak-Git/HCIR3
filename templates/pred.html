@@ -1,161 +1,296 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
-<head>
-  <meta charset="UTF-8">
-  <title>ML mental health</title>
-  
-  <style>
-	body {
-		font-family: 'Arial', sans-serif;
-		background-color: #e6f7ff; /* Light blue background color */
-		margin: 0;
-		padding: 50px 0; /* Added spacing on top */
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-	}
+<html>
+    <!--From https://codepen.io/frytyler/pen/EGdtg-->
+    <head>
+        <meta charset="UTF-8" />
+        <title>ML mental health</title>
 
-	.login {
-		background-color: #ffffff;
-		padding: 20px;
-		border-radius: 8px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		width: 300px;
-		text-align: center;
-	}
+        <style>
+            body {
+                font-family: "Arial", sans-serif;
+                background-color: #e6f7ff; /* Light blue background color */
+                margin: 0;
+                padding: 50px 0; /* Added spacing on top */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
 
-	h1 {
-		color: #333;
-	}
+            .login {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                text-align: center;
+            }
 
-	form {
-		margin-top: 100px;
-	}
-	input {
-		width: 100%;
-		padding: 10px;
-		margin: 5px 0;
-		box-sizing: border-box;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-	}
+            h1 {
+                color: #333;
+            }
 
-	button {
-		background-color: #4caf50;
-		color: #fff;
-		padding: 10px;
-		border: none;
-		border-radius: 4px;
-		cursor: pointer;
-		width: 100%;
-	}
+            form {
+                margin-top: 100px;
+            }
+            input {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
 
-	p {
-		margin-top: 50px;
-		color: #333;
-	}
-    .text{
-        font-size: 10px;
-        float: left;
-        padding-left: 7px;
-    }
-</style>
+            button {
+                background-color: #4caf50;
+                color: #fff;
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+            }
 
-</head>
+            p {
+                margin-top: 50px;
+                color: #333;
+            }
+            .text {
+                font-size: 10px;
+                float: left;
+                padding-left: 7px;
+            }
+        </style>
+    </head>
 
-<body>
- <div class="login">
-	<h1>Mental Health Prediction </h1>
+    <body>
+        <div class="login">
+            <h1>Mental Health Prediction</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-	 <form action="/prediction" method="post">
-		
+            <!-- Main Input For Receiving Query to our ML -->
+            <form action="/prediction" method="post">
+                <input
+                    type="text"
+                    name="Age"
+                    placeholder="Age"
+                    required="required"
+                /><br />
 
-    	<input type="text" name="Age" placeholder="Age" required="required" /><br>
-		
-        <input type="text" name="Gender" placeholder="Gender" required="required" /><br>
-		<span class="text">Type 0 for Female, 1 for Male, and 2 for Others</span><br>
+                <input
+                    type="text"
+                    name="Gender"
+                    placeholder="Gender"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Female, 1 for Male, and 2 for Others</span
+                ><br />
 
-		<input type="text" name="self_employed" placeholder="self_employed" required="required" /><br>
-		<span class="text">Type 0 for No, Type 1 for Yes</span><br>
+                <input
+                    type="text"
+                    name="self_employed"
+                    placeholder="self_employed"
+                    required="required"
+                /><br />
+                <span class="text">Type 0 for No, Type 1 for Yes</span><br />
 
+                <input
+                    type="text"
+                    name="family_hostory"
+                    placeholder="family_history"
+                    required="required"
+                /><br />
+                <span class="text">Type 0 for No, Type 1 for Yes</span><br />
 
-		<input type="text" name="family_hostory" placeholder="family_history" required="required" /><br>
-		<span class="text">Type 0 for No, Type 1 for Yes</span><br>
+                <input
+                    type="text"
+                    name="work_interfere"
+                    placeholder="work_interfere"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Never, Type 1 for Often, Type 2 for Rarely ,<br />
+                    Type 3 for Sometimes</span
+                ><br /><br />
 
-		<input type="text" name="work_interfere" placeholder="work_interfere" required="required" /><br>
-		<span class="text">Type 0 for Never, Type 1 for Often, Type 2 for Rarely ,<br> Type 3 for Sometimes</span><br><br>
+                <input
+                    type="text"
+                    name="no_employees"
+                    placeholder="no_employees"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for 1-5, Type 1 for 6-25 ,Type 2 for 26-100,Type 3
+                    for 100-500,Type 4 for 500-1000,Type 5 for more than 1000 </span
+                ><br />
 
+                <input
+                    type="text"
+                    name="remote_work"
+                    placeholder="remote_work"
+                    required="required"
+                /><br />
+                <span class="text">Type 0 for No, Type 1 for Yes</span><br />
 
-		<input type="text" name="no_employees" placeholder="no_employees" required="required" /><br>
-		<span class="text">Type 0 for 1-5, Type 1 for 6-25 ,Type 2 for 26-100,Type 3 for 100-500,Type 4 for 500-1000,Type 5 for more than 1000 </span><br>
+                <input
+                    type="text"
+                    name="benefits"
+                    placeholder="benefits"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
+                <input
+                    type="text"
+                    name="tech_company"
+                    placeholder="tech_company"
+                    required="required"
+                /><br />
+                <span class="text">Type 0 for No, Type 1 for Yes</span><br />
 
-		<input type="text" name="remote_work" placeholder="remote_work" required="required" /><br>
-		<span class="text">Type 0 for No, Type 1 for Yes</span><br>
+                <input
+                    type="text"
+                    name="care_options"
+                    placeholder="care_options"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for No, Type 1 for Not sure, Type 2 for Yes </span
+                ><br />
 
+                <input
+                    type="text"
+                    name="wellness_program"
+                    placeholder="wellness_program"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
-		<input type="text" name="benefits" placeholder="benefits" required="required" /><br>
-		<span class="text">Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span><br>
+                <input
+                    type="text"
+                    name="seek_help"
+                    placeholder="seek_help"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
+                <input
+                    type="text"
+                    name="anonymity"
+                    placeholder="anonymity"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
-		<input type="text" name="tech_company" placeholder="tech_company" required="required" /><br>
-		<span class="text">Type 0 for No, Type 1 for Yes</span><br>
+                <input
+                    type="text"
+                    name="leave"
+                    placeholder="leave"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Don't know, Type 1 for somewhat Difficult , Type
+                    2 for somewhat Easy,<br />
+                    Type 3 for very Difficult, Type 4 for Very Easy</span
+                ><br />
 
+                <input
+                    type="text"
+                    name="mental_health_consequence"
+                    placeholder="mental_health_consequence"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
-		<input type="text" name="care_options" placeholder="care_options" required="required" /><br>
-		<span class="text">Type 0 for No, Type 1 for Not sure, Type 2 for Yes </span><br>
+                <input
+                    type="text"
+                    name="phys_health_consequence"
+                    placeholder="phys_health_consequence"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
-		<input type="text" name="wellness_program" placeholder="wellness_program" required="required" /><br>
-		<span class="text">Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span><br>
+                <input
+                    type="text"
+                    name="coworkers"
+                    placeholder="coworkers"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Few, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
-		<input type="text" name="seek_help" placeholder="seek_help" required="required" /><br>
-		<span class="text">Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span><br>
+                <input
+                    type="text"
+                    name="supervisor"
+                    placeholder="supervisor"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Few, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
+                <input
+                    type="text"
+                    name="mental_health_interview"
+                    placeholder="mental_health_interview"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
-		<input type="text" name="anonymity" placeholder="anonymity" required="required" /><br>
-		<span class="text">Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span><br>
+                <input
+                    type="text"
+                    name="phys_health_interview"
+                    placeholder="phys_health_interview"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
+                <input
+                    type="text"
+                    name="mental_vs_physical"
+                    placeholder="mental_vs_physical"
+                    required="required"
+                /><br />
+                <span class="text"
+                    >Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span
+                ><br />
 
-		<input type="text" name="leave" placeholder="leave" required="required" /><br>
-		<span class="text">Type 0 for Don't know, Type 1 for somewhat Difficult , Type 2 for somewhat Easy,<br> Type 3 for very Difficult, Type 4 for Very Easy</span><br>
+                <input
+                    type="text"
+                    name="obs_consequence"
+                    placeholder="obs_consequence"
+                    required="required"
+                /><br />
+                <span class="text">Type 0 for No, Type 1 for Yes</span
+                ><br /><br />
 
-		<input type="text" name="mental_health_consequence" placeholder="mental_health_consequence" required="required" /><br>
-		<span class="text">Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span><br>
-
-
-		<input type="text" name="phys_health_consequence" placeholder="phys_health_consequence" required="required" /><br>
-		<span class="text">Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span><br>
-
-		<input type="text" name="coworkers" placeholder="coworkers" required="required" /><br>
-		<span class="text">Type 0 for Few, Type 1 for No , Type 2 for Yes</span><br>
-
-		<input type="text" name="supervisor" placeholder="supervisor" required="required" /><br>
-		<span class="text">Type 0 for Few, Type 1 for No , Type 2 for Yes</span><br>
-
-
-		<input type="text" name="mental_health_interview" placeholder="mental_health_interview" required="required" /><br>
-		<span class="text">Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span><br>
-
-		<input type="text" name="phys_health_interview" placeholder="phys_health_interview" required="required" /><br>
-		<span class="text">Type 0 for Maybe, Type 1 for No , Type 2 for Yes</span><br>
-
-		<input type="text" name="mental_vs_physical" placeholder="mental_vs_physical" required="required" /><br>
-		<span class="text">Type 0 for Don't know, Type 1 for No , Type 2 for Yes</span><br>
-
-		<input type="text" name="obs_consequence" placeholder="obs_consequence" required="required" /><br>
-		<span class="text">Type 0 for No, Type 1 for Yes</span><br><br>
-
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-   <!-- Display the prediction here -->
-   <p>{{ prediction_text }}</p>
-
- </div>
-
-
-</body>
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-block btn-large"
+                >
+                    Predict
+                </button>
+            </form>
+            <!-- Display the prediction here -->
+            <p style="align-self:center;">{{ prediction_text }}</p>
+        </div>
+    </body>
 </html>
