@@ -8,7 +8,7 @@ model = pickle.load(open("model.pkl", "rb"))
 
 @application.route('/')
 def pred():
-    return render_template('index.html')
+    return render_template('bootstrap.html')
 
 @application.route("/prediction", methods=["POST"])
 def prediction():
@@ -25,7 +25,7 @@ def prediction():
     else:
         prediction_text = "This person doesn't require mental health treatment"
 
-    return render_template('index.html',prediction_text=prediction_text)
+    return render_template('bootstrap.html',prediction_text=prediction_text)
 
 if __name__ == "__main__":
     application.run(debug=True)
